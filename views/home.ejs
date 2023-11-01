@@ -1,0 +1,32 @@
+<html>
+<head>
+  <title>My Blog</title>
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+<h1>Welcome to My Blog</h1>
+
+<div class="title">
+  <ul>
+    <% blogPosts.forEach(post => { %> 
+      <form action="/blog/<%= post.id %>" method="post">
+        <li> 
+          <h4 id="h4"><%= post.title %></h4> 
+          <p><%= post.content.substring(0, 100) %><%= post.content.length > 100 ? '...' : '' %></p> 
+          <button type="submit">Read more</button> 
+        </li> 
+      </form>
+    <% }); %>
+  </ul>
+  <form action="/add-blog" method="get">
+    <button type="submit" id="btn">Add a New Blog Post</button>
+  </form>
+</div>
+
+
+<%- include('partials/footer') %>
+</body>
+</html>
+
